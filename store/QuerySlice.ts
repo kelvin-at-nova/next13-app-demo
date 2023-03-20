@@ -18,11 +18,6 @@ const querySlice = createSlice({
   name: "query",
   initialState,
   reducers: {
-    setList(state, action: PayloadAction<QueryState>) {
-      state.page = action.payload.page;
-      state.limit = action.payload.limit;
-      state.search = undefined;
-    },
     setSearch(state, action: PayloadAction<QueryState>) {
       state.page = action.payload.page;
       state.limit = action.payload.limit;
@@ -36,5 +31,5 @@ export const getQuery = (state: RootState) => ({
   limit: state.query.limit,
   search: state.query.search,
 });
-export const { setList, setSearch } = querySlice.actions;
+export const { setSearch } = querySlice.actions;
 export default querySlice;
