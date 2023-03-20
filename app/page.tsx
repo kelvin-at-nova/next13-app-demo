@@ -7,17 +7,19 @@ Use case: branding, stations, articles, etc.
 */
 
 import StoreProvider from "@/components/StoreProvider";
-import UserListSsr from "@/components/UserList";
-import styles from "../page.module.css";
-import { getUsers } from "@/preloaders/getUsers";
+import styles from "./page.module.css";
+import CsrContent from "../components/CsrContent";
+import SsrHeading from "@/components/SsrHeading";
+import { getBrand } from "@/preloaders/getBrand";
 
 export default async function Home() {
-  const gotUsers = await getUsers(); //get data from server side
+  const company = await getBrand();
   return (
     <>
       <StoreProvider>
         <main className={styles.main}>
-          <UserListSsr users={gotUsers} />
+          <SsrHeading {...company} />
+          <CsrContent />
         </main>
       </StoreProvider>
     </>

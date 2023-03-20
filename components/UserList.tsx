@@ -4,7 +4,7 @@ import { User, ResultsState } from "@/models/User";
 interface Props {
   users: ResultsState;
 }
-const UserListSsr = ({ users }: Props) => {
+const UserList = ({ users }: Props) => {
   const page = 1;
   const limit = 10; // page is always 1, feature not implemented
   const { results, total } = users;
@@ -21,4 +21,4 @@ const UserListSsr = ({ users }: Props) => {
     </>
   );
 };
-export default UserListSsr;
+export default UserList;

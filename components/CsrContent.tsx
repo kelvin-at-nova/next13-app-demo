@@ -8,17 +8,16 @@ Use case: now playing, search, etc.
 
 import SearchInputCsr from "@/components/SearchInput";
 import UserList from "@/components/UserList";
-import styles from "../page.module.css";
 import { useAppDispatch, useAppSelector } from "@/hooks/useStore";
 import { useQuery } from "@/store/QueryApi";
 import HelloTime from "@/components/HelloTime";
 
-export default function Home() {
+export default function CsrContent() {
   const dispatch = useAppDispatch();
   const search = useAppSelector((state) => state.query.search);
   const { data, isLoading, isError, error } = useQuery({ page: 1, limit: 10, q: search });
   return (
-    <main className={styles.main}>
+    <div>
       <HelloTime />
       <SearchInputCsr /> {/* only CSR components can do client level data manipulation */}
       {data ? (
@@ -28,6 +27,6 @@ export default function Home() {
       ) : isError ? (
         <div>An Error has occured {error.toString()}</div>
       ) : null}
-    </main>
+    </div>
   );
 }
