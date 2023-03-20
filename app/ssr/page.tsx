@@ -7,19 +7,17 @@ Use case: branding, stations, articles, etc.
 */
 
 import StoreProvider from "@/components/StoreProvider";
-import UserListSsr from "@/components/UserListSsr";
-import { ssrUsersPreloader } from "@/preloaders/SsrUsersPreloader";
+import UserListSsr from "@/components/UserList";
 import styles from "../page.module.css";
-import { getUsers } from "@/preloaders/fetchers/getUsers";
+import { getUsers } from "@/preloaders/getUsers";
 
 export default async function Home() {
   const gotUsers = await getUsers(); //get data from server side
-  const ssrUsers = await ssrUsersPreloader(gotUsers);
   return (
     <>
       <StoreProvider>
         <main className={styles.main}>
-          <UserListSsr users={ssrUsers} />
+          <UserListSsr users={gotUsers} />
         </main>
       </StoreProvider>
     </>

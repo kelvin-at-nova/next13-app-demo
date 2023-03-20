@@ -1,8 +1,8 @@
 import UserRow from "./UserRow";
-import { User, UsersState } from "@/models/User";
+import { User, ResultsState } from "@/models/User";
 
 interface Props {
-  users: UsersState;
+  users: ResultsState;
 }
 const UserListSsr = ({ users }: Props) => {
   const page = 1;
@@ -11,8 +11,8 @@ const UserListSsr = ({ users }: Props) => {
   return (
     <>
       <div style={{ display: "grid", gap: "10px", gridTemplateColumns: "16px auto 1fr" }}>
-        {results.map((u: User) => (
-          <UserRow u={u} key={u.id} />
+        {results.map((u: User, i) => (
+          <UserRow u={u} key={i} />
         ))}
       </div>
       <div style={{ margin: "40px auto" }}>

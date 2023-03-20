@@ -1,5 +1,9 @@
-export type UsersState = {
+export type QueryState = {
   search?: string; //filter
+  page: number;
+  limit: number;
+};
+export type ResultsState = {
   page: number;
   total: number;
   results: User[]; //init with 1st page data from server side

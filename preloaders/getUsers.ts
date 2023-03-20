@@ -1,7 +1,7 @@
-import { UsersState } from "@/models/User";
+import { ResultsState } from "@/models/User";
 
 export async function getUsers() {
-  const response = await fetch("http://localhost:3000/api/list", {
+  const response = await fetch("http://localhost:3000/api/query", {
     next: { revalidate: 60 }, //seconds, turns it into a cached fetcher
     method: "GET",
     // headers: {
@@ -11,5 +11,5 @@ export async function getUsers() {
     // },
   });
   if (!response.ok) throw new Error("Failed to fetch data");
-  return (await response.json()) as UsersState;
+  return (await response.json()) as ResultsState;
 }

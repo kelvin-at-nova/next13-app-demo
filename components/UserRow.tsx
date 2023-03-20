@@ -4,13 +4,13 @@ import { User } from "@/models/User";
 interface Props {
   u: User;
 }
-const UserRow = ({ u }: Props, key: string) => {
+const UserRow = ({ u }: Props) => {
   return (
     <>
-      <div key={key}>
+      <div>
         <Image src={u.picture.thumbnail} alt={""} width={16} height={16} />
       </div>
-      <div key={u.id}>
+      <div>
         {u.name.title} {u.name.first} {u.name.last}
       </div>
       <div>

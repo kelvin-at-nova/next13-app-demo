@@ -10,11 +10,14 @@ export async function GET(request: Request) {
   const filtered = strSearch
     ? results.filter(
         (u) =>
+          u.name.title.toLowerCase().includes(strSearch.toLowerCase()) ||
           u.name.first.toLowerCase().includes(strSearch.toLowerCase()) ||
           u.name.last.toLowerCase().includes(strSearch.toLowerCase()) ||
-          (u.name.first + " " + u.name.last).toLowerCase().includes(strSearch.toLowerCase())
+          (u.name.title + " " + u.name.first + " " + u.name.last)
+            .toLowerCase()
+            .includes(strSearch.toLowerCase())
       )
     : results;
   const paged = filtered.slice((page - 1) * limit, page * limit);
-  return NextResponse.json({ results: filtered, total: filtered.length });
+  return NextResponse.json({ results: paged, total: filtered.length });
 }
